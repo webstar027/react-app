@@ -18,6 +18,19 @@ class Counters extends Component{
         console.log(counters);
 
     }
+    handleadd = () => {
+        if( this.state.counters.length >= 10 ) return;
+        if( this.state.counters.length == 0){
+            const id = 0;
+            const value = 5;
+            this.setState ({counters: [...this.state.counters, {   id:id, value:value}]});
+        }else{
+            const id = this.state.counters[this.state.counters.length - 1].id + 1;
+            const value = this.state.counters[this.state.counters.length - 1].value + 5;
+            this.setState ({counters: [...this.state.counters, {   id:id, value:value}]});
+        }
+
+    }
     render() {
 
         console.log('props', this.props);
@@ -33,6 +46,14 @@ class Counters extends Component{
                     <Counter key={counter.id} value={counter.value} onDelete={this.handledelete} selected={true} id={counter.id}>
                         <h4>Counter #{counter.id}</h4>
                     </Counter>)}
+                    <div className="row">
+                        <div className="col-sm-6 text-left">
+                            <button className='btn btn-default' onClick={this.handleadd}>Add more</button>
+                        </div>
+                        <div className="col-sm-6">
+
+                        </div>
+                        </div>
             </div>
         )
     }

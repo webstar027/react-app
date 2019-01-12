@@ -42,8 +42,8 @@ class Counter extends Component {
 
     }
 
-    clickincrease = product => {
-        if(this.state.count >= this.props.value) return this.props.value;
+    clickincrease = () => {
+        if(this.state.count >= this.props.value * 2) return this.props.value;
         this.setState({count: this.state.count + 1});
 
     }
